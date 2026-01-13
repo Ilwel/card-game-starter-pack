@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c76xrtcqxpntm"]
+
+[ext_resource type="PackedScene" uid="uid://dqkdicyibcc81" path="res://Scenes/CardManager.tscn" id="1_uqwdt"]
+[ext_resource type="Script" uid="uid://kionxp7mcc34" path="res://Scripts/HandBalatro.gd" id="1_y7l1p"]
+
+[node name="HandBalatro" type="Node2D"]
+script = ExtResource("1_y7l1p")
+
+[node name="CardManager" parent="." instance=ExtResource("1_uqwdt")]

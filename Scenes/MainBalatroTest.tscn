@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://2pbjwookgu6t"]
+
+[ext_resource type="PackedScene" uid="uid://c76xrtcqxpntm" path="res://Scenes/Hands/HandBalatro.tscn" id="1_bsbhq"]
+[ext_resource type="PackedScene" uid="uid://l1gxjt6we0nk" path="res://Scenes/Deck.tscn" id="2_a77vm"]
+
+[node name="MainBalatroTest" type="Node2D"]
+
+[node name="HandBalatro" parent="." instance=ExtResource("1_bsbhq")]
+hihglight_cards_limit = 3
+
+[node name="Deck" parent="." node_paths=PackedStringArray("hand") instance=ExtResource("2_a77vm")]
+position = Vector2(1162, 495)
+hand = NodePath("../HandBalatro")

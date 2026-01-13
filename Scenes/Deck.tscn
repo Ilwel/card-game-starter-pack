@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://l1gxjt6we0nk"]
+
+[ext_resource type="Script" uid="uid://cdxyavnyq24t2" path="res://Scripts/Deck.gd" id="1_57cf8"]
+[ext_resource type="Texture2D" uid="uid://l2pl347klut4" path="res://Assets/CardBack.png" id="2_0g7pp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0g7pp"]
+size = Vector2(100, 140)
+
+[node name="Deck" type="Node2D"]
+script = ExtResource("1_57cf8")
+
+[node name="DeckSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_0g7pp")
+
+[node name="DeckArea" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="DeckCollision" type="CollisionShape2D" parent="DeckArea"]
+shape = SubResource("RectangleShape2D_0g7pp")
+debug_color = Color(0.89316857, 0.5781688, 0.7451218, 0.41960785)
+
+[connection signal="input_event" from="DeckArea" to="." method="_on_deck_area_input_event"]

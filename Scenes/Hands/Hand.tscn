@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvl8j2086bm7e"]
+
+[ext_resource type="Script" uid="uid://cywim1hgp53m1" path="res://Scripts/Hand.gd" id="1_q1mbt"]
+[ext_resource type="PackedScene" uid="uid://dqkdicyibcc81" path="res://Scenes/CardManager.tscn" id="2_fkehq"]
+
+[node name="Hand" type="Node2D"]
+script = ExtResource("1_q1mbt")
+
+[node name="CardManager" parent="." instance=ExtResource("2_fkehq")]
+position = Vector2(74.649506, -4.747551)
