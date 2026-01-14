@@ -1,6 +1,5 @@
 class_name Card extends Node2D
 
-@export var draggable = true
 @export var flipped = false
 
 @onready var card_back_sprite = $CardBackSprite

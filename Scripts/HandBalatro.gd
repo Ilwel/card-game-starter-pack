@@ -1,6 +1,6 @@
 class_name HandBalatro extends Hand
 
-@export var hihglight_cards_limit = 5
+@export var highlight_cards_limit = 5
 @onready var highlight_cards = []
 
 func _ready() -> void:

@@ -6,7 +6,7 @@
 [node name="MainBalatroTest" type="Node2D"]
 
 [node name="HandBalatro" parent="." instance=ExtResource("1_bsbhq")]
-hihglight_cards_limit = 3
+highlight_cards_limit = 3
 
 [node name="Deck" parent="." node_paths=PackedStringArray("hand") instance=ExtResource("2_a77vm")]
 position = Vector2(1162, 495)
