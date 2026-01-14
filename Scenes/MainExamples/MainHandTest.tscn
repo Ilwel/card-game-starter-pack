@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://voc736qbshtg"]
+
+[ext_resource type="PackedScene" uid="uid://cvl8j2086bm7e" path="res://Scenes/Hands/Hand.tscn" id="1_q73k7"]
+[ext_resource type="PackedScene" uid="uid://l1gxjt6we0nk" path="res://Scenes/Deck.tscn" id="2_ydqno"]
+[ext_resource type="PackedScene" uid="uid://brwg7gyk7w647" path="res://Scenes/Slot.tscn" id="3_631kj"]
+
+[node name="MainHandTest" type="Node2D"]
+
+[node name="Hand" parent="." instance=ExtResource("1_q73k7")]
+
+[node name="Deck" parent="." node_paths=PackedStringArray("hand") instance=ExtResource("2_ydqno")]
+position = Vector2(1132, 480)
+hand = NodePath("../Hand")
+
+[node name="Slot" parent="." instance=ExtResource("3_631kj")]
+position = Vector2(766, 309)
+
+[node name="Slot2" parent="." instance=ExtResource("3_631kj")]
+position = Vector2(502, 306)

@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var screen_size: Vector2 = get_viewport_rect().size
-var card_being_dragged = null
+var card_being_dragged: Card = null
 var current_time: float = 0.0
 
 func _ready() -> void:
@@ -32,6 +32,7 @@ func _input(event: InputEvent) -> void:
 	
 func start_drag(card: Card):
 	card_being_dragged = card
+	card_being_dragged.z_index = 1
 	
 func handle_balatro_finish_drag():
 	var hand: HandBalatro = get_parent()
@@ -40,12 +41,29 @@ func handle_balatro_finish_drag():
 		get_parent().highlight_cards.push_back(card_being_dragged)	
 	elif is_instance_of(get_parent(), HandBalatro) and get_parent().highlight_cards.has(card_being_dragged) and current_time > 0.2:
 		remove_card_from_highlights(card_being_dragged)
+		
+func handle_slot(card_slot: CardSlot):
+	remove_child(card_being_dragged)
+	card_being_dragged.card_collision.disabled = true
+	card_being_dragged.z_index = -1
+	card_slot.add_child(card_being_dragged)
+	card_slot.move_child(card_being_dragged, 0)
+	card_being_dragged.global_position = card_slot.global_position
+	card_slot.slot_full = true
+	if is_instance_of(get_parent(), HandBalatro) and get_parent().highlight_cards.has(card_being_dragged):
+		remove_card_from_highlights(card_being_dragged)
 	
 func finish_drag():
 	if not card_being_dragged:
 		return
-	if is_instance_of(get_parent(), HandBalatro):
+	var card_slot_found = raycast_check_for_slot()
+	if card_slot_found and not card_slot_found.slot_full:
+		handle_slot(card_slot_found)
+	elif is_instance_of(get_parent(), HandBalatro):
 		handle_balatro_finish_drag()
+		card_being_dragged.z_index = 0	
+	else:
+		card_being_dragged.z_index = 0	
 	current_time = 0.0
 	card_being_dragged = null
 	
@@ -65,6 +83,12 @@ func raycast_check_for_card() -> Card:
 	var result: Array = Globals.intersect_point_with_mask(1)
 	if result.size() > 0:
 		return _get_highest_z_card(result)
+	return null
+	
+func raycast_check_for_slot() -> CardSlot:
+	var result: Array = Globals.intersect_point_with_mask(2)
+	if result.size() > 0:
+		return result[0].collider.get_parent()
 	return null
 
 func connect_card_signals(card:Card):

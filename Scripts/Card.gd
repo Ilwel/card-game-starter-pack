@@ -4,6 +4,7 @@ class_name Card extends Node2D
 
 @onready var card_back_sprite = $CardBackSprite
 @onready var card_sprite = $CardSprite
+@onready var card_collision = $CardArea/CardCollision
 var card_id = ""
 
 signal click
