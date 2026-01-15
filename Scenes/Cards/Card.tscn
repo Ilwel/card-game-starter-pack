@@ -10,7 +10,9 @@ size = Vector2(100, 140)
 [node name="Card" type="Node2D"]
 script = ExtResource("1_58ae4")
 
-[node name="CardSprite" type="Sprite2D" parent="."]
+[node name="FaceCard" type="Node2D" parent="."]
+
+[node name="CardSprite" type="Sprite2D" parent="FaceCard"]
 texture = ExtResource("2_rd7hj")
 
 [node name="CardBackSprite" type="Sprite2D" parent="."]

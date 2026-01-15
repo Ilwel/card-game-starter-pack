@@ -3,8 +3,10 @@ class_name Card extends Node2D
 @export var flipped = false
 
 @onready var card_back_sprite = $CardBackSprite
-@onready var card_sprite = $CardSprite
+@onready var face_card = $FaceCard
+@onready var card_sprite = $FaceCard/CardSprite
 @onready var card_collision = $CardArea/CardCollision
+@onready var default_face_position = face_card.position.y
 var card_id = ""
 
 signal click
@@ -25,5 +27,4 @@ func flip():
 	
 func load_sprite():
 	var card_path = "res://Assets/CardSprites/%s.png"  % card_id
-	print(card_path)
 	card_sprite.texture = load(card_path)

@@ -3,6 +3,7 @@ extends Node2D
 @onready var screen_size: Vector2 = get_viewport_rect().size
 var card_being_dragged: Card = null
 var current_time: float = 0.0
+var card_highlight = false
 
 func _ready() -> void:
 	pass
@@ -16,7 +17,7 @@ func _process(delta: float) -> void:
 			clamp(mouse_pos.y, 0, screen_size.y)
 		)
 		card_being_dragged.rotation = 0
-	elif is_instance_of(get_parent(), Hand):
+	elif is_instance_of(get_parent(), Hand) and not card_highlight:
 		var hand: Hand =  get_parent()
 		hand.reposition_cards()
 		
@@ -29,10 +30,25 @@ func _input(event: InputEvent) -> void:
 					start_drag(card)
 			elif card_being_dragged:
 					finish_drag()
+		elif event is InputEventMouseMotion and not card_being_dragged:
+			var card = raycast_check_for_card()
+			if card:
+				if is_instance_of(get_parent(), HandHighlight):
+					var hand: HandHighlight = get_parent()
+					hand.reposition_cards(card)
+					card_highlight = true
+			else:
+				if is_instance_of(get_parent(), HandHighlight):
+					var hand: HandHighlight = get_parent()
+					hand.reposition_cards()
+					card_highlight = false
 	
 func start_drag(card: Card):
 	card_being_dragged = card
 	card_being_dragged.z_index = 1
+	if is_instance_of(get_parent(), HandHighlight):
+		var hand: HandHighlight = get_parent()
+		hand.reposition_cards()
 	
 func handle_balatro_finish_drag():
 	var hand: HandBalatro = get_parent()

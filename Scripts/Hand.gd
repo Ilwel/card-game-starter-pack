@@ -1,8 +1,9 @@
 class_name Hand extends Node2D
 
 const CARD_WIDTH = 100
+const CARD_HEIGHT = 140
 const CARD_GAP = 10
-const ROW_Y = 550
+var row_y = 550
 
 var CardScene = preload("res://Scenes/Cards/Card.tscn")
 
@@ -11,7 +12,7 @@ var CardScene = preload("res://Scenes/Cards/Card.tscn")
 @onready var card_manager = $CardManager
 
 func _ready() -> void:
-	pass
+	row_y = get_viewport_rect().size.y - (CARD_HEIGHT / 2.0)
 
 func _process(_delta: float) -> void:
 	pass
@@ -39,7 +40,7 @@ func reposition_cards() -> void:
 
 	for i in range(card_manager.get_children().size()):
 		var card = card_manager.get_children()[i]
-		var target_pos := Vector2(start_x + i * (CARD_WIDTH + CARD_GAP), ROW_Y)
+		var target_pos := Vector2(start_x + i * (CARD_WIDTH + CARD_GAP), row_y)
 		update_card_transform(card, target_pos)
 	
 func add_card(card_id, source) -> void:

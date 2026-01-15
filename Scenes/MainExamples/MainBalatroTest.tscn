@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c76xrtcqxpntm" path="res://Scenes/Hands/HandBalatro.tscn" id="1_djouo"]
 [ext_resource type="PackedScene" uid="uid://l1gxjt6we0nk" path="res://Scenes/Deck.tscn" id="2_dysry"]
-[ext_resource type="PackedScene" uid="uid://brwg7gyk7w647" path="res://Scenes/Slot.tscn" id="3_dysry"]
+[ext_resource type="PackedScene" uid="uid://brwg7gyk7w647" path="res://Scenes/CardSlot.tscn" id="3_dysry"]
 
 [node name="MainBalatroTest" type="Node2D"]
 

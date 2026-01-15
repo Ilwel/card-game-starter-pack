@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxeg8cwyt012d"]
+
+[ext_resource type="Script" uid="uid://becen2jb2lq6k" path="res://Scripts/HandHighlight.gd" id="1_1utmi"]
+[ext_resource type="PackedScene" uid="uid://dqkdicyibcc81" path="res://Scenes/CardManager.tscn" id="2_tmio5"]
+
+[node name="HandHighlight" type="Node2D"]
+script = ExtResource("1_1utmi")
+
+[node name="CardManager" parent="." instance=ExtResource("2_tmio5")]

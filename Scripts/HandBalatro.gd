@@ -4,7 +4,7 @@ class_name HandBalatro extends Hand
 @onready var highlight_cards = []
 
 func _ready() -> void:
-	pass
+	super._ready()
 
 func _process(_delta: float) -> void:
 	pass
@@ -18,8 +18,8 @@ func reposition_cards() -> void:
 
 	for i in range(card_manager.get_children().size()):
 		var card = card_manager.get_children()[i]
-		var target_y = ROW_Y
+		var target_y = row_y
 		if highlight_cards.has(card):
-			target_y -= 64
+			target_y -= CARD_HEIGHT / 2.0
 		var target_pos := Vector2(start_x + i * (CARD_WIDTH + CARD_GAP), target_y)
 		update_card_transform(card, target_pos)

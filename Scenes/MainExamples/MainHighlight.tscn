@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://px5tlomfiofa"]
+
+[ext_resource type="PackedScene" uid="uid://cxeg8cwyt012d" path="res://Scenes/Hands/HandHighlight.tscn" id="1_gyjh2"]
+[ext_resource type="PackedScene" uid="uid://l1gxjt6we0nk" path="res://Scenes/Deck.tscn" id="2_evlwa"]
+[ext_resource type="PackedScene" uid="uid://brwg7gyk7w647" path="res://Scenes/CardSlot.tscn" id="3_xrqyu"]
+
+[node name="MainHighlight" type="Node2D"]
+
+[node name="HandHighlight" parent="." instance=ExtResource("1_gyjh2")]
+
+[node name="Deck" parent="." node_paths=PackedStringArray("hand") instance=ExtResource("2_evlwa")]
+position = Vector2(1104, 456)
+hand = NodePath("../HandHighlight")
+
+[node name="Slot" parent="." instance=ExtResource("3_xrqyu")]
+position = Vector2(436, 314)
+
+[node name="Slot2" parent="." instance=ExtResource("3_xrqyu")]
+position = Vector2(636, 315)
