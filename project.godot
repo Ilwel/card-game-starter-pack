@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="CardGameStarterPack"
+config/name="GGJ"
 run/main_scene="uid://2pbjwookgu6t"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"

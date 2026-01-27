@@ -6,6 +6,8 @@ extends Node2D
 
 func _ready() -> void:
 	load_deck_json()
+	deck_cards.shuffle()
+	draw_n(5)
 
 func _process(_delta: float) -> void:
 	pass
@@ -27,14 +29,15 @@ func draw():
 	if deck_cards.size() == 0:
 		return
 	if hand:
-		hand.add_card(deck_cards.pop_back(), self)
+		hand.add_card(deck_cards.pop_front(), self)
 	
 func draw_n(n: int):
 	if deck_cards.size() < n:
 		return
 	if hand:
 		for i in range(n):
-			hand.add_card(deck_cards.pop_back(), self)
+			draw()
+			await get_tree().create_timer(0.15).timeout
 
 
 func _on_deck_area_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:

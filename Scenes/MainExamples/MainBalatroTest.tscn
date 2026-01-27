@@ -1,20 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://2pbjwookgu6t"]
+[gd_scene load_steps=5 format=3 uid="uid://2pbjwookgu6t"]
 
 [ext_resource type="PackedScene" uid="uid://c76xrtcqxpntm" path="res://Scenes/Hands/HandBalatro.tscn" id="1_djouo"]
+[ext_resource type="Script" uid="uid://bykqgnd38v67p" path="res://Scripts/SlotStack.gd" id="1_dysry"]
 [ext_resource type="PackedScene" uid="uid://l1gxjt6we0nk" path="res://Scenes/Deck.tscn" id="2_dysry"]
-[ext_resource type="PackedScene" uid="uid://brwg7gyk7w647" path="res://Scenes/CardSlot.tscn" id="3_dysry"]
+[ext_resource type="PackedScene" uid="uid://bqbncpnpnyt68" path="res://Scenes/SlotStack.tscn" id="4_ak7nj"]
 
 [node name="MainBalatroTest" type="Node2D"]
 
 [node name="HandBalatro" parent="." instance=ExtResource("1_djouo")]
-highlight_cards_limit = 3
 
 [node name="Deck" parent="." node_paths=PackedStringArray("hand") instance=ExtResource("2_dysry")]
 position = Vector2(1162, 495)
 hand = NodePath("../HandBalatro")
 
-[node name="Slot2" parent="." instance=ExtResource("3_dysry")]
-position = Vector2(661, 261)
-
-[node name="Slot" parent="." instance=ExtResource("3_dysry")]
-position = Vector2(445, 258)
+[node name="Slot" parent="." instance=ExtResource("4_ak7nj")]
+position = Vector2(640, 360)
+script = ExtResource("1_dysry")

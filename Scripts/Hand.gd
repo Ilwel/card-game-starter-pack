@@ -1,7 +1,7 @@
 class_name Hand extends Node2D
 
-const CARD_WIDTH = 100
-const CARD_HEIGHT = 140
+const CARD_WIDTH = 96
+const CARD_HEIGHT = 128
 const CARD_GAP = 10
 var row_y = 550
 

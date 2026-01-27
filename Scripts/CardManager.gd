@@ -61,11 +61,12 @@ func handle_balatro_finish_drag():
 func handle_slot(card_slot: CardSlot):
 	remove_child(card_being_dragged)
 	card_being_dragged.card_collision.disabled = true
-	card_being_dragged.z_index = -1
+	card_being_dragged.z_index = 0
 	card_slot.add_child(card_being_dragged)
-	card_slot.move_child(card_being_dragged, 0)
 	card_being_dragged.global_position = card_slot.global_position
-	card_slot.slot_full = true
+	if not is_instance_of(card_slot, SlotStack):
+		card_slot.move_child(card_being_dragged, 0)
+		card_slot.slot_full = true
 	if is_instance_of(get_parent(), HandBalatro) and get_parent().highlight_cards.has(card_being_dragged):
 		remove_card_from_highlights(card_being_dragged)
 	

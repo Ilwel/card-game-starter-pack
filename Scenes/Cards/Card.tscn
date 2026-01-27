@@ -1,21 +1,23 @@
 [gd_scene load_steps=5 format=3 uid="uid://fmwsg3srwc5e"]
 
 [ext_resource type="Script" uid="uid://bfawnophcv12l" path="res://Scripts/Card.gd" id="1_58ae4"]
-[ext_resource type="Texture2D" uid="uid://dbskpfw5emeal" path="res://Assets/CardSprites/hearts.png" id="2_rd7hj"]
+[ext_resource type="Texture2D" uid="uid://cwrispqkxwf3a" path="res://Assets/CardSprites/deck/joker_1.png" id="2_58ae4"]
 [ext_resource type="Texture2D" uid="uid://l2pl347klut4" path="res://Assets/CardBack.png" id="3_7mr5f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pnb5n"]
-size = Vector2(100, 140)
+size = Vector2(48, 64)
 
 [node name="Card" type="Node2D"]
+scale = Vector2(2, 2)
 script = ExtResource("1_58ae4")
 
 [node name="FaceCard" type="Node2D" parent="."]
 
 [node name="CardSprite" type="Sprite2D" parent="FaceCard"]
-texture = ExtResource("2_rd7hj")
+texture = ExtResource("2_58ae4")
 
 [node name="CardBackSprite" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("3_7mr5f")
 
 [node name="CardArea" type="Area2D" parent="."]
